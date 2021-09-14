@@ -34,7 +34,7 @@ const carsByMake = [
 // 1) TS can do type inference when extracting values from an array
 // Help with inference when extracting values
 // If we hover over car, type inference will know that it is a string
-const car = carMakers[0];
+// const car = carMakers[0];
 const myCar = carMakers.pop();
 
 
@@ -42,11 +42,11 @@ const myCar = carMakers.pop();
 // Prevent incompatible values
 // if we hover over 100: Argument of type 'number' is not assignable to parameter of type 'string'.
 // This is telling us we are trying to put a type of number, into an array of strings
-carMakers.push(100);
+// carMakers.push(100);
 
 
 
-// 3) We can get help with '.map', '.forEach', '.reduce' functions
+// 3) We can get help with '.map', 'forEach', '.reduce' functions
 // Help with '.map'
 // When we put the . after car, we get all the methods that belong to strings
 carMakers.map((car:string): string => {
@@ -57,4 +57,18 @@ carMakers.map((car:string): string => {
 
 
 // 4) Flexible - arrays can still contain multiple different types
-// 
+// Flexible types
+// When you hover over importantDates you will see, "const importantDates: (string | Date)[]" 
+// "const importantDates: (string | Date)[]" This will be an array[] that contains strings "| or" Dates
+const importantDates = [new Date(), '2030-10-10'];
+// If we wanted to initialize a new array without strings but with a Date object. 
+//  If we initialize an array thats empty we want to set it types like we have below.
+const importDates: (Date | string)[] = [new Date()];
+importDates.push('2030-10-10');
+importDates.push(new Date());
+// We get the error because were trying to push a number into the array that does not contain the number type
+// importDates.push(100)
+
+
+// Where to used typed arrays?
+// Any time we need to represent a collection of records with some arbitrary sort order
